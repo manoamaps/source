@@ -1,0 +1,26 @@
+.header-background{
+    background-image: url("/images/parking1.jpg");
+    background-size: cover;
+    padding-bottom: 25px;
+}
+
+.white-text{
+    color:white;
+}
+
+.darken-overlay{
+    background-color:rgba(0,0,0, 0.6);
+}
+
+.margin-center{
+    margin:auto;
+}
+
+.footer-color{
+    background-color:#333333;
+}
+
+.pad-bottom{
+    padding-top: 10px;
+    padding-bottom:25px;
+}

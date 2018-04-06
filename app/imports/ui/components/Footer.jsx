@@ -5,11 +5,11 @@ class Footer extends React.Component {
   render() {
     const divStyle = { paddingTop: '15px' };
     return (
-        <footer>
+        <footer className = "footer-color white-text pad-bottom">
           <div style={divStyle} className="ui center aligned container">
-            <hr />
-              Department of Information and Computer Sciences <br />
-              University of Hawaii<br />
+
+              ManoaMaps Created by Team<br /><br />
+              Contact Us: 1234-HAHA-NOTANUMBER<br />
               Honolulu, HI 96822
           </div>
         </footer>
