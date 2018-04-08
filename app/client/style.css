@@ -24,3 +24,10 @@
     padding-top: 10px;
     padding-bottom:25px;
 }
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 
+}
