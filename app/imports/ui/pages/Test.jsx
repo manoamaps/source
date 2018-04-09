@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image } from 'semantic-ui-react';
+import { Grid, Image } from 'semantic-ui-react';
 
  /*
 
@@ -11,8 +11,15 @@ import { Image } from 'semantic-ui-react';
 export default class componentName extends Component {
     render() {
         return (
-            <div className="grid-container">
-                <Image className="map" size="huge" src="/images/map.gif"/>
+            <div>
+                <Grid columns={2}>
+                    <Grid.Column>
+                        <p>Roley</p>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <Image className="map" size="huge bordered" src="/images/map.gif"/>
+                    </Grid.Column>
+                </Grid>
             </div>
         );
     }
