@@ -34,3 +34,13 @@
 .map {
     border-image: 5px solid red;
 }
+
+.map-container {
+    position: relative !important;
+}
+
+.map-image {
+    position: absolute !important;
+    /* TODO: This is some cheese, can we not do some darkmagicshit */
+    margin-top: -115% !important;
+}
