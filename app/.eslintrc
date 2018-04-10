@@ -17,6 +17,8 @@
     "plugin:react/recommended"
   ],
   "rules": {
+		"no-unused-vars": "warn",
+		"no-trailing-spaces": "warn",
     "arrow-parens": "off",
     "camelcase": "off",
     "class-methods-use-this": "off",
