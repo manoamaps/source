@@ -1,9 +1,13 @@
 import React from 'react';
 import { Stuffs, StuffSchema } from '/imports/api/stuff/stuff';
 import {PassesLink, PassesLinkSchema} from '/imports/api/passeslink/passeslink';
+import {PassesInfo, PassesInfoSchema} from '/imports/api/passesinfo/passesinfo';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
+import ListField from 'uniforms-semantic/ListField';
+import ListItemField from 'uniforms-semantic/ListItemField';
+import NestField from 'uniforms-semantic/NestField';
 import NumField from 'uniforms-semantic/NumField';
 import SelectField from 'uniforms-semantic/SelectField';
 import SubmitField from 'uniforms-semantic/SubmitField';
@@ -23,8 +27,9 @@ class AddPasses extends React.Component {
     this.formRef = null;
     const name = Meteor.userId();
 
-      const passes = [];
-    PassesLink.insert({ name, passes }, this.insertCallback);
+    const passes = [];
+
+    //PassesLink.insert({ name, passes }, this.insertCallback);
   }
 
   /** Notify the user of the results of the submit. If successful, clear the form. */
@@ -39,10 +44,10 @@ class AddPasses extends React.Component {
 
   /** On submit, insert the data. */
   submit(data) {
-    //const { name } = data;
-    const name = Meteor.user().username;
-    const passes = [];
-    PassesLink.insert({ name, passes }, this.insertCallback);
+    const { name, passes } = data;
+    const _name = Meteor.user().username;
+    //const passes = [];
+    PassesLink.insert({ name: _name, passes}, this.insertCallback);
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -53,7 +58,11 @@ class AddPasses extends React.Component {
             <Header as="h2" textAlign="center">Add Stuff</Header>
             <AutoForm ref={(ref) => { this.formRef = ref; }} schema={PassesLinkSchema} onSubmit={this.submit}>
               <Segment>
-                <TextField name='name'/>
+                <TextField name = 'name'/>
+                  <ListField name = 'passes'>
+
+                  </ListField>
+
                 <SubmitField value='Submit'/>
               </Segment>
             </AutoForm>
