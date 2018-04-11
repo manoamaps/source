@@ -43,11 +43,11 @@ export default class Map extends Component {
         // If past 4PM, or before 7AM
         if (this.props.time > 15 || this.props.time < 8) {
             return (
-                <Image className="map-image" size="huge" src="/images/map2.gif"/>
+                <Image size="huge" src="/images/map2.gif"/>
             );
         }
         return (
-            <Image className="map-image" size="huge" src="/images/map1.gif"/>
+            <Image size="huge" src="/images/map1.gif"/>
         );
     }
 

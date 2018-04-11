@@ -31,7 +31,6 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <ProtectedRoute path="/list" component={ListStuff}/>
 
-
               <Route path="/map" component={ManoaMap}/>
               <ProtectedRoute path="/add" component={AddPasses}/>
 

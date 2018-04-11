@@ -40,7 +40,5 @@
 }
 
 .map-image {
-    position: absolute !important;
     /* TODO: This is some cheese, can we not do some darkmagicshit */
-    margin-top: -115% !important;
 }
