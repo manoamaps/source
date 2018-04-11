@@ -3,6 +3,13 @@ import { Grid, Image } from 'semantic-ui-react';
 
 /** A simple static component to render some text for the landing page. */
 class Landing extends React.Component {
+
+    constructor(props){
+        super(props);
+        console.log(Meteor.userId());
+        console.log(Meteor.user());
+    }
+
   render() {
     return (
         <div className = "header-background">
