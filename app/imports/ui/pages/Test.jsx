@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Image } from 'semantic-ui-react';
+import { Grid, Image, Button } from 'semantic-ui-react';
 import InputRange from 'react-input-range';
 
 import 'react-input-range/lib/css/index.css';
@@ -16,7 +16,11 @@ class Test extends Component {
 
         this.state = {
             value: 0,
+            currentMap: 1,
         };
+    }
+    updateValue(i) {
+        this.setState({ value: i });
     }
 
     render() {
@@ -24,17 +28,18 @@ class Test extends Component {
             <div>
                 <Grid columns={2}>
                     <Grid.Column>
-                        <Map time={this.state.value} />
+                        {/* TODO: Change these buttons to pictures of parking passes */}
+                        <Button onClick={() => { this.setCurrentMap(1); }}>Student Pass</Button>
+                        <Button onClick={() => { this.setCurrentMap(2); }}>Faculty Pass</Button>
+                        <Button onClick={() => { this.setCurrentMap(3); }}>Night Pass</Button>
                     </Grid.Column>
                     <Grid.Column>
+                        <Map time={this.state.value}/>
                         <InputRange
-                            maxValue = {24}
+                            maxValue = {23} // Since 0 is 12:00AM
                             minValue = {0}
                             value = {this.state.value}
-                            onChange = {
-                                // TODO-DONE: Setup proper react, so that we update a component, instead of having it all in one page/.jsx
-                                value => this.setState({ value })
-                            }
+                            onChange = {value => this.setState({ value })}
                         />
                     </Grid.Column>
                 </Grid>
