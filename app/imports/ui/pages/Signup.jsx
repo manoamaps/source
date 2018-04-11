@@ -32,6 +32,8 @@ export default class Signup extends React.Component {
         // browserHistory.push('/login');
       }
     });
+
+
   }
 
   /** Display the signup form. */
