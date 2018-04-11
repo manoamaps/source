@@ -1,6 +1,6 @@
 import React from 'react';
 import { Stuffs, StuffSchema } from '/imports/api/stuff/stuff';
-import {Passes, PassesSchema} from '/imports/api/account/passes';
+import {PassesLink, PassesLinkSchema} from '/imports/api/passeslink/passeslink';
 import { Grid, Segment, Header } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
@@ -24,7 +24,7 @@ class AddPasses extends React.Component {
     const name = Meteor.userId();
 
       const passes = [];
-    Passes.insert({ name, passes }, this.insertCallback);
+    PassesLink.insert({ name, passes }, this.insertCallback);
   }
 
   /** Notify the user of the results of the submit. If successful, clear the form. */
@@ -41,8 +41,8 @@ class AddPasses extends React.Component {
   submit(data) {
     //const { name } = data;
     const name = Meteor.user().username;
-    const passes = "Hellow";
-    Passes.insert({ name, passes }, this.insertCallback);
+    const passes = [];
+    PassesLink.insert({ name, passes }, this.insertCallback);
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -51,7 +51,7 @@ class AddPasses extends React.Component {
         <Grid container centered>
           <Grid.Column>
             <Header as="h2" textAlign="center">Add Stuff</Header>
-            <AutoForm ref={(ref) => { this.formRef = ref; }} schema={PassesSchema} onSubmit={this.submit}>
+            <AutoForm ref={(ref) => { this.formRef = ref; }} schema={PassesLinkSchema} onSubmit={this.submit}>
               <Segment>
                 <TextField name='name'/>
                 <SubmitField value='Submit'/>

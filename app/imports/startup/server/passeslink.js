@@ -1,11 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { Roles } from 'meteor/alanning:roles';
-import { Passes } from '../../api/account/passes.js';
+import { PassesLink } from '../../api/passeslink/passeslink.js';
 
 /** Initialize the database with a default data document. */
 function addData(data) {
-  console.log(`  Adding: ${data.name} (${data.owner})`);
-  Passes.insert(data);
+  //console.log(`  Adding: ${data.name} (${data.owner})`);
+  PassesLink.insert(data);
 }
 
 /** Initialize the collection if empty.
@@ -17,7 +17,7 @@ if (Passes.find().count() === 0) {
 }*/
 
 /** This subscription publishes only the documents associated with the logged in user */
-Meteor.publish('Passes', function publish() {
+Meteor.publish('PassesLink', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
     return Passes.find({ name: username });

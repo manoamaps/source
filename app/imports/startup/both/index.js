@@ -1,2 +1,2 @@
 import '/imports/api/stuff';
-import '/imports/api/account';
+import '/imports/api/passeslink';
