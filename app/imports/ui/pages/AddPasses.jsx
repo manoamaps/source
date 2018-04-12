@@ -55,13 +55,10 @@ class AddPasses extends React.Component {
     return (
         <Grid container centered>
           <Grid.Column>
-            <Header as="h2" textAlign="center">Add Stuff</Header>
+            <Header as="h2" textAlign="center">Add Passes</Header>
             <AutoForm ref={(ref) => { this.formRef = ref; }} schema={PassesLinkSchema} onSubmit={this.submit}>
               <Segment>
-                <TextField name = 'name'/>
-                  <ListField name = 'passes'>
-
-                  </ListField>
+                <ListField name = 'passes'/>
 
                 <SubmitField value='Submit'/>
               </Segment>

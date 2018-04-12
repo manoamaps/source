@@ -12,14 +12,11 @@ const PassesLinkSchema = new SimpleSchema({
   name: String,   //This one will just be Meteor.userId()
   passes:{
       type: Array,
-
   },
   'passes.$':{
       type: String,
-      allowedValues: ['Evening', 'Student'],
+      allowedValues: ['Evening', 'Student', 'Hawaiian', 'Astronomy'],
   }
-
-
 }, { tracker: Tracker });
 
 /** Attach this schema to the collection. */
