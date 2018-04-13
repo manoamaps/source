@@ -58,6 +58,8 @@ class AddPasses extends React.Component {
             <Header as="h2" textAlign="center">Add Passes</Header>
             <AutoForm ref={(ref) => { this.formRef = ref; }} schema={PassesLinkSchema} onSubmit={this.submit}>
               <Segment>
+
+                <TextField name = 'name'/>
                 <ListField name = 'passes'/>
 
                 <SubmitField value='Submit'/>
