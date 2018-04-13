@@ -47,7 +47,7 @@ class AddPasses extends React.Component {
     const { name, passes } = data;
     const _name = Meteor.user().username;
     //const passes = [];
-    PassesLink.insert({ name: _name, passes}, this.insertCallback);
+    PassesLink.insert({ name: _name, passes }, this.insertCallback);
   }
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
@@ -59,7 +59,6 @@ class AddPasses extends React.Component {
             <AutoForm ref={(ref) => { this.formRef = ref; }} schema={PassesLinkSchema} onSubmit={this.submit}>
               <Segment>
                 <ListField name = 'passes'/>
-
                 <SubmitField value='Submit'/>
               </Segment>
             </AutoForm>
@@ -70,6 +69,3 @@ class AddPasses extends React.Component {
 }
 
 export default AddPasses;
-
-
-
