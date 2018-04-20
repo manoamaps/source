@@ -3,6 +3,7 @@ import { Grid, Image, Header } from 'semantic-ui-react';
 import InputRange from 'react-input-range';
 import PropTypes from 'prop-types';
 import 'react-input-range/lib/css/index.css';
+import { PassesInfo } from '/imports/api/passesinfo/passesinfo';
 
 /**
  * TODO: When Andrew finishes his thing and each item (parking pass) has default constructors,
