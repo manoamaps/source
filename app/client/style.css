@@ -24,3 +24,21 @@
     padding-top: 10px;
     padding-bottom:25px;
 }
+
+
+
+.grid-container {
+    display: grid;
+}
+
+.map {
+    border-image: 5px solid red;
+}
+
+.map-container {
+    position: relative !important;
+}
+
+.map-image {
+    /* TODO: This is some cheese, can we not do some darkmagicshit */
+}
