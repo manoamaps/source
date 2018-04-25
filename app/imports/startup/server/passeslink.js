@@ -20,7 +20,8 @@ if (Passes.find().count() === 0) {
 Meteor.publish('PassesLink', function publish() {
   if (this.userId) {
     const username = Meteor.users.findOne(this.userId).username;
-    return Passes.find({ name: username });
+    console.log("uname = " + username);
+    return PassesLink.find({ name: username });
   }
   return this.ready();
 });
@@ -28,7 +29,7 @@ Meteor.publish('PassesLink', function publish() {
 /** This subscription publishes all documents regardless of user, but only if the logged in user is the Admin. */
 Meteor.publish('PassAdmin', function publish() {
   if (this.userId && Roles.userIsInRole(this.userId, 'admin')) {
-    return Passes.find();
+    return PassesLink.find();
   }
   return this.ready();
 });
