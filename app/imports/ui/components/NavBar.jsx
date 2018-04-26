@@ -24,6 +24,7 @@ class NavBar extends React.Component {
         ) : ''}
 
         <Menu.Item as={NavLink} exact to="/map">Map</Menu.Item>
+        <Menu.Item as={NavLink} exact to="/gmap">Google Maps</Menu.Item>
 
         <Menu.Item position="right">
           {this.props.currentUser === '' ? (
