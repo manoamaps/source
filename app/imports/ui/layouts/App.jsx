@@ -18,6 +18,7 @@ import Signin from '../pages/Signin';
 import Signup from '../pages/Signup';
 import Signout from '../pages/Signout';
 import ManoaMap from '../pages/ManoaMap';
+import GoogleMap from '../components/GoogleMap';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -33,6 +34,7 @@ class App extends React.Component {
               <ProtectedRoute path="/list" component={ListOpenParking}/>
 
               <Route path="/map" component={ManoaMap}/>
+              <Route path="/gmap" component={GoogleMap}/>
               <ProtectedRoute path="/add" component={AddPasses}/>
 
 
