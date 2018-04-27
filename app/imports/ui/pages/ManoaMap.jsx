@@ -46,7 +46,7 @@ class Test extends Component {
                                 <Table.Header>
                                     <Table.Row>
                                         <Table.HeaderCell>Your Passes</Table.HeaderCell>
-
+                                        <Table.HeaderCell>Delete Passes</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
