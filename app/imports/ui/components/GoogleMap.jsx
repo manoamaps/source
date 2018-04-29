@@ -9,7 +9,7 @@ export default class GoogleMap extends Component {
 
     render() {
         const style = {
-            height: '100%',
+            height: '85vh',
             width: '100%',
         };
         return (
