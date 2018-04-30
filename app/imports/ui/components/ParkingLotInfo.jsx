@@ -17,8 +17,9 @@ class ParkingLotInfo extends React.Component {
     takespot(data){
         //const {name} = data;
         //OpenParkings.remove(this.props.stuff.name);
-        console.log(OpenParkings.find({name: this.props.stuff.name}));
-
+        const hi = OpenParkings.find({name: this.props.stuff.name}).fetch();
+        console.log(hi);
+        //console.log(OpenParkings.find(this.props.stuff._id));
 
     }
 
@@ -27,7 +28,7 @@ class ParkingLotInfo extends React.Component {
         <Table.Row>
           <Table.Cell>{this.props.stuff.name}</Table.Cell>
           <Table.Cell>{this.props.stuff.openSpots}</Table.Cell>
-            <Table.Cell><Button name = "Take" onClick = {this.takespot}>Take</Button> </Table.Cell>
+            <Table.Cell><Button name = "Take" key = {this.props.stuff._id} onClick = {this.takespot}>Take</Button> </Table.Cell>
         </Table.Row>
     );
   }
