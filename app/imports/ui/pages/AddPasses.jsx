@@ -40,7 +40,7 @@ class AddPasses extends React.Component {
     if (error) {
       Bert.alert({ type: 'danger', message: `Add failed: ${error.message}` });
     } else {
-      Bert.alert({ type: 'success', message: 'Add succeeded' });
+      Bert.alert({ type: 'success', message: 'The task has been completed' });
       this.formRef.reset();
     }
   }

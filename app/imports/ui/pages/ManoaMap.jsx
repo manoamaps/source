@@ -10,7 +10,6 @@ import PropTypes from "prop-types";
 import { withTracker } from 'meteor/react-meteor-data';
 
 /*
-
     map1: Normal Student Parking
     map2: Everywhere Parking
     map3: Night Pass
