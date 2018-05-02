@@ -19,18 +19,14 @@ console.log("parking zones length: " + parkingZones.length);
 if(OpenParkings.find().count() === 0 || OpenParkings.find().count() != parkingZones.length)  {
     OpenParkings.remove({});
     for(i = 0; i < parkingZones.length; i++){
-        OpenParkings.insert({ name:   parkingZones[i], openSpots: 0 });
+        OpenParkings.insert({ name:   parkingZones[i], openSpots: 5 });
     }
 }
 
 if (Meteor.settings.defaultData) {
     console.log('Creating default data.');
     //Meteor.settings.defaultData.map(data => addData(data));
-
-
-
 }
-
 
 /** This subscription publishes only the documents associated with the logged in user */
 Meteor.publish('OpenParking', function publish() {
