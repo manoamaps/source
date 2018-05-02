@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import { withTracker } from 'meteor/react-meteor-data';
 
 /*
+
     map1: Normal Student Parking
     map2: Everywhere Parking
     map3: Night Pass
@@ -32,14 +33,20 @@ class Test extends Component {
     render() {
         return (
             <div>
-                <Grid container columns={1}>
+                <Grid columns={2}>
                     <Grid.Column>
+                        <Grid.Row>
+                        {/* TODO: Change these buttons to pictures of parking passes */}
+                            <Button onClick={() => { this.setCurrentMap(1); }}>Student Pass</Button>
+                            <Button onClick={() => { this.setCurrentMap(2); }}>Faculty Pass</Button>
+                            <Button onClick={() => { this.setCurrentMap(3); }}>Night Pass</Button>
+                        </Grid.Row>
                         <Grid.Row>
                             <Table celled>
                                 <Table.Header>
                                     <Table.Row>
                                         <Table.HeaderCell>Your Passes</Table.HeaderCell>
-                                        <Table.HeaderCell>Delete Passes</Table.HeaderCell>
+
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
@@ -47,15 +54,15 @@ class Test extends Component {
                                 </Table.Body>
                             </Table>
                         </Grid.Row>
-                        <Grid.Row>
-                            <Map time={this.state.value}/>
-                            <InputRange
-                                maxValue = {23} // Since 0 is 12:00AM
-                                minValue = {0}
-                                value = {this.state.value}
-                                onChange = {value => this.setState({ value })}
-                            />
-                        </Grid.Row>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <Map time={this.state.value}/>
+                        <InputRange
+                            maxValue = {23} // Since 0 is 12:00AM
+                            minValue = {0}
+                            value = {this.state.value}
+                            onChange = {value => this.setState({ value })}
+                        />
                     </Grid.Column>
                 </Grid>
             </div>
