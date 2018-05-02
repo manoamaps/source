@@ -10,7 +10,6 @@ import PropTypes from "prop-types";
 import { withTracker } from 'meteor/react-meteor-data';
 
 /*
-
     map1: Normal Student Parking
     map2: Everywhere Parking
     map3: Night Pass
@@ -40,6 +39,7 @@ class Test extends Component {
                                 <Table.Header>
                                     <Table.Row>
                                         <Table.HeaderCell>Your Passes</Table.HeaderCell>
+                                        <Table.HeaderCell>Delete Passes</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>

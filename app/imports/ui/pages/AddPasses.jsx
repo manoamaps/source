@@ -2,7 +2,8 @@ import React from 'react';
 import { Stuffs, StuffSchema } from '/imports/api/stuff/stuff';
 import {PassesLink, PassesLinkSchema} from '/imports/api/passeslink/passeslink';
 import {PassesInfo, PassesInfoSchema} from '/imports/api/passesinfo/passesinfo';
-import { Grid, Segment, Header } from 'semantic-ui-react';
+import PassItem from '/imports/ui/components/PassItem';
+import { Grid, Segment, Header, Table } from 'semantic-ui-react';
 import AutoForm from 'uniforms-semantic/AutoForm';
 import TextField from 'uniforms-semantic/TextField';
 import ListField from 'uniforms-semantic/ListField';
@@ -15,6 +16,8 @@ import HiddenField from 'uniforms-semantic/HiddenField';
 import ErrorsField from 'uniforms-semantic/ErrorsField';
 import { Bert } from 'meteor/themeteorchef:bert';
 import { Meteor } from 'meteor/meteor';
+import PropTypes from "prop-types";
+import { withTracker } from 'meteor/react-meteor-data';
 
 /** Renders the Page for adding a document. */
 class AddPasses extends React.Component {
@@ -37,7 +40,7 @@ class AddPasses extends React.Component {
     if (error) {
       Bert.alert({ type: 'danger', message: `Add failed: ${error.message}` });
     } else {
-      Bert.alert({ type: 'success', message: 'Add succeeded' });
+      Bert.alert({ type: 'success', message: 'The task has been completed' });
       this.formRef.reset();
     }
   }
@@ -54,19 +57,47 @@ class AddPasses extends React.Component {
   render() {
     return (
         <Grid container centered>
-          <Grid.Column>
-            <Header as="h2" textAlign="center">Add Passes</Header>
-            <AutoForm ref={(ref) => { this.formRef = ref; }} schema={PassesLinkSchema} onSubmit={this.submit}>
-              <Segment>
-                <HiddenField name = 'name' value = 'default'/>
-                <ListField name = 'passes'/>
-                <SubmitField value='Submit'/>
-              </Segment>
-            </AutoForm>
-          </Grid.Column>
+            <Grid.Row>
+                <Table celled>
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.HeaderCell>Your Passes</Table.HeaderCell>
+                            <Table.HeaderCell>Delete Passes</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                        {this.props.stuffs.map((stuff) => <PassItem key={stuff._id} stuff={stuff} />)}
+                    </Table.Body>
+                </Table>
+            </Grid.Row>
+          <Grid.Row>
+              <Grid.Column>
+                <Header as="h2" textAlign="center">Add Passes</Header>
+                <AutoForm ref={(ref) => { this.formRef = ref; }} schema={PassesLinkSchema} onSubmit={this.submit}>
+                  <Segment>
+                    <HiddenField name = 'name' value = 'default'/>
+                    <ListField name = 'passes'/>
+                    <SubmitField value='Submit'/>
+                  </Segment>
+                </AutoForm>
+              </Grid.Column>
+          </Grid.Row>
         </Grid>
     );
   }
 }
 
-export default AddPasses;
+AddPasses.propTypes = {
+    stuffs: PropTypes.array.isRequired,
+    ready: PropTypes.bool.isRequired,
+};
+
+/** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
+export default withTracker(() => {
+    // Get access to Stuff documents.
+    const subscription = Meteor.subscribe('PassesLink');
+    return {
+        stuffs: PassesLink.find({}).fetch(),
+        ready: subscription.ready(),
+    };
+})(AddPasses);
