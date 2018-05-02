@@ -20,8 +20,12 @@ import { PassesInfo } from '/imports/api/passesinfo/passesinfo';
  */
 
 export default class Map extends Component {
+
+
     constructor(props) {
         super(props);
+
+
 
         this.state = {
             whichMap: 1,
@@ -42,13 +46,40 @@ export default class Map extends Component {
     }
     returnCurrentMap() {
         // If past 4PM, or before 7AM
-        if (this.props.time > 15 || this.props.time < 8) {
+        /*if (this.props.time > 15 || this.props.time < 8) {
             return (
                 <Image size="huge" src="/images/map2.gif"/>
             );
-        }
+        }*/
+
+        var divtyle1 = {
+            marginTop:'-65%',
+            visibility: this.props.toDisplay[0],
+        };
+
+        var divtyle2 = {
+            marginTop:'-65%',
+            visibility: this.props.toDisplay[1]
+        };
+
+        var divtyle3 = {
+            marginTop:'-65%',
+            visibility: this.props.toDisplay[2]
+        };
+
         return (
-            <Image size="huge" src="/images/map1.gif"/>
+            <div>
+                <div>
+                <Image size="huge" src="/images/maps/base.png"  />
+                    <Image style = {divtyle1} size="huge" src="/images/maps/zonetop.png"/>
+                    <Image style = {divtyle2} size="huge" src="/images/maps/zone20.png"/>
+                    <Image style = {divtyle3} size="huge" src="/images/maps/zone22.png"/>
+
+
+                </div>
+
+
+            </div>
         );
     }
 
@@ -68,4 +99,5 @@ export default class Map extends Component {
 
 Map.propTypes = {
     time: PropTypes.number,
+    toDisplay: PropTypes.array,
 };
