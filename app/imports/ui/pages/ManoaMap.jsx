@@ -37,51 +37,53 @@ class Test extends Component {
         _name = Meteor.user().username;
         //console.log(PassesLink.find({name: _name}).fetch()[0].passes);
 
-        var passesnames = PassesLink.find({name: _name}).fetch()[0].passes;
-        if(passesnames.length > 0){
-            var passes = [];  //All of the passes you own
-            for(var x = 0; x < passesnames.length; x++){
-                passes.push(PassesInfo.find({name: passesnames[x]}).fetch()[0]);
-            }
-            console.log(passes);
-            if(passes.length > 0){
-                var masterParkingTimes = [];
-                console.log(Object.keys(passes[0].parkingTimes));
-                var s = Object.keys(passes[0].parkingTimes);
-                console.log(s);
-                for(var x = 0; x < s.length; x++){
-                    masterParkingTimes.push(passes[0].parkingTimes[s[x]]);
+
+        if(PassesLink.find({name: _name}).fetch()[0] != null)
+        {
+            var passesnames = PassesLink.find({name: _name}).fetch()[0].passes;
+            if(passesnames.length > 0){
+                var passes = [];  //All of the passes you own
+                for(var x = 0; x < passesnames.length; x++){
+                    passes.push(PassesInfo.find({name: passesnames[x]}).fetch()[0]);
                 }
-
-
-                /*for(var x = 0; x < passes[0].parkingTimes.length; x++){
-                    masterParkingTimes.push(passes[0].parkingTimes[x]);
-                }*/
-                console.log("master times: " + masterParkingTimes);
-
-
-                for(var x = 0; x < passes.length; x++){
-                    for(var y = 0; y < passes[x].parkingTimes.length; y++){
-                        masterParkingTimes[x] = mergeArrays(masterParkingTimes[x], passes.parkingTimes[y]);
+                console.log(passes);
+                if(passes.length > 0){
+                    var masterParkingTimes = [];
+                    console.log(Object.keys(passes[0].parkingTimes));
+                    var s = Object.keys(passes[0].parkingTimes);
+                    console.log(s);
+                    for(var x = 0; x < s.length; x++){
+                        masterParkingTimes.push(passes[0].parkingTimes[s[x]]);
                     }
 
+
+                    /*for(var x = 0; x < passes[0].parkingTimes.length; x++){
+                        masterParkingTimes.push(passes[0].parkingTimes[x]);
+                    }*/
+                    console.log("master times: " + masterParkingTimes);
+
+
+                    for(var x = 0; x < passes.length; x++){
+                        for(var y = 0; y < passes[x].parkingTimes.length; y++){
+                            masterParkingTimes[x] = mergeArrays(masterParkingTimes[x], passes.parkingTimes[y]);
+                        }
+
+                    }
+                    console.log("master times: " + masterParkingTimes);
                 }
-                console.log("master times: " + masterParkingTimes);
-            }
 
 
-            for(var x = 0; x < this.state.thisDisplay.length; x++) {
-                console.log(x + ": " + masterParkingTimes[x]);
-                if (this.checkInside(this.state.value, masterParkingTimes[x])) {
-                    this.state.thisDisplay[x] = "visible";
-                } else {
-                    this.state.thisDisplay[x] = "hidden";
+                for(var x = 0; x < this.state.thisDisplay.length; x++) {
+                    console.log(x + ": " + masterParkingTimes[x]);
+                    if (this.checkInside(this.state.value, masterParkingTimes[x])) {
+                        this.state.thisDisplay[x] = "visible";
+                    } else {
+                        this.state.thisDisplay[x] = "hidden";
+                    }
                 }
             }
-
-            this.setState({ value: i });
         }
-
+        this.setState({ value: i });
     }
 
     checkInside(time, timeArray){
