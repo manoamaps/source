@@ -8,13 +8,44 @@ import 'react-input-range/lib/css/index.css';
 import Map from '../components/Map.jsx';
 import PropTypes from "prop-types";
 import { withTracker } from 'meteor/react-meteor-data';
+import GoogleMapReact from 'google-map-react';
 
-/*
-    map1: Normal Student Parking
-    map2: Everywhere Parking
-    map3: Night Pass
-*/
+21.29875, -157.815591
+const openStalls = [
+    {
+        lat: 21.29885,
+        lng: -157.815591,
+        open: true,
+    },
+    {
+        lat: 21.29878,
+        lng: -157.815591,
+        open: true,
+    },
+    {
+        lat: 21.29881,
+        lng: -157.815591,
+        open: true,
+    },
+];
+
+const ReactComponent = (() => (
+    <div style={{
+        position: 'relative', color: 'white', background: 'red',
+        height: 25, width: 25, top: -20, left: -30,    
+    }}>
+    </div>
+));
+
+
 class Test extends Component {
+    static defaultProps = {
+        center: {
+            lat: 21.298516,
+            lng: -157.817563,
+        },
+        zoom: 17,
+    };
     constructor(props) {
         super(props);
 
@@ -48,7 +79,24 @@ class Test extends Component {
                             </Table>
                         </Grid.Row>
                         <Grid.Row>
-                            <Map time={this.state.value}/>
+                            <div style={{height: '85vh', width: '100%'}}>
+                                <GoogleMapReact
+                                    bootstrapURLKeys={{ key: ['AIzaSyCP_BFT1dJV1G3dMcU0KB_wNnixlSBl9E8']}}
+                                    defaultCenter={this.props.center}
+                                    defaultZoom={this.props.zoom}
+                                >
+                                    { <ReactComponent
+                                        lat={21.29875}
+                                        lng={-157.815591}
+                                    /> }
+                                    {openStalls.map((stall) => (
+                                            <ReactComponent
+                                                lat={stall.lat}
+                                                lng={stall.lng}
+                                            />
+                                    ))}
+                                </GoogleMapReact>
+                            </div>
                             <InputRange
                                 maxValue = {23} // Since 0 is 12:00AM
                                 minValue = {0}
