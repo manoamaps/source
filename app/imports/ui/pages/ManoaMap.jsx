@@ -9,9 +9,7 @@ import 'react-input-range/lib/css/index.css';
 import Map from '../components/Map.jsx';
 import PropTypes from "prop-types";
 import { withTracker } from 'meteor/react-meteor-data';
-<<<<<<< HEAD
 import { Meteor } from 'meteor/meteor';
-=======
 import GoogleMapReact from 'google-map-react';
 import Stall from "../components/Stall.jsx";
 
@@ -23,7 +21,6 @@ const ReactComponent = (() => (
     </div>
 ));
 
->>>>>>> master
 
 class Test extends Component {
     static defaultProps = {
