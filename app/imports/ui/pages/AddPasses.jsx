@@ -26,6 +26,7 @@ class AddPasses extends React.Component {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
+    this.checkDups = this.checkDups.bind(this);
     this.insertCallback = this.insertCallback.bind(this);
     this.formRef = null;
     const name = Meteor.userId();
@@ -45,13 +46,49 @@ class AddPasses extends React.Component {
     }
   }
 
+    checkDups(a){
+        var uniq = [];
+        for(var i = 0; i < a.length; i++){
+            if(!(uniq.includes(a[i]))){
+                uniq.push(a[i]);
+            }
+        }
+        return uniq;
+    }
+
   /** On submit, insert the data. */
   submit(data) {
-    const { name, passes } = data;
+    var { name, passes } = data;
     const _name = Meteor.user().username;
     //const passes = [];
-    PassesLink.insert({ name: _name, passes }, this.insertCallback);
+
+      //var passesnames = PassesLink.find({name: _name}).fetch()[0].passes;
+      if(PassesLink.find({name: _name}).fetch()[0] == null)
+      {
+          PassesLink.insert({ name: _name, passes }, this.insertCallback);
+      }  else {
+          //PassesLink.update({name: _name}, {$set: {passes: passes}});
+          var doc = PassesLink.findOne({name: _name});
+
+          passes = this.checkDups(passes);
+
+          for(var i = 0; i < passes.length; i++){
+              if(doc.passes.includes(passes[i])){
+                  passes.splice(i, i+1);
+                  i--;
+
+              }
+          }
+
+          var newPasses = doc.passes.concat(_.uniq(passes));
+
+          PassesLink.update({_id: doc._id}, {$set: {passes: newPasses}});
+      }
+
+
   }
+
+
 
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {

@@ -26,6 +26,10 @@ Meteor.publish('PassesInfo', function publish() {
     const username = Meteor.users.findOne(this.userId).username;
     return PassesInfo.find({ name: username });
   }*/
+    if (this.userId) {
+        return PassesInfo.find({});
+    }
+
   return this.ready();
 });
 

@@ -60,6 +60,7 @@ class ListOpenParking extends React.Component {
                 <Table.HeaderCell>Name</Table.HeaderCell>
                 <Table.HeaderCell>Open Spots</Table.HeaderCell>
                 <Table.HeaderCell>Take Spot</Table.HeaderCell>
+                <Table.HeaderCell>Leave Spot</Table.HeaderCell>
 
               </Table.Row>
             </Table.Header>

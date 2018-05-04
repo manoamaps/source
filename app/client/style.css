@@ -46,3 +46,8 @@
 .map-image {
     /* TODO: This is some cheese, can we not do some darkmagicshit */
 }
+
+.map-overlay {
+    opacity: 0.5;
+
+}
