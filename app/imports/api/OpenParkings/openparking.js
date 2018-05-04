@@ -2,10 +2,6 @@ import { Mongo } from 'meteor/mongo';
 import SimpleSchema from 'simpl-schema';
 import { Tracker } from 'meteor/tracker';
 
-// Ok 
-
-/** Create a Meteor collection. */
-const OpenParkings = new Mongo.Collection('OpenParkings');
 const parkingZones = ['Zone 1', 'Zone 2', 'Zone 3', 'Zone 4',
         'Zone 5', 'Zone 6', 'Zone 7', 'Zone 8',
         'Zone 9', 'Zone 10', 'Zone 11', 'Zone 12',
@@ -13,6 +9,8 @@ const parkingZones = ['Zone 1', 'Zone 2', 'Zone 3', 'Zone 4',
         'Zone 17', 'Zone 18', 'Zone 19','Zone 20',
         'Astronomy', 'Zone 22'];
 
+/** Create a Meteor collection. */
+const OpenParkings = new Mongo.Collection('OpenParkings');
 /** Create a schema to constrain the structure of documents associated with this collection. */
 const OpenParkingSchema = new SimpleSchema({
   name: {
@@ -21,7 +19,7 @@ const OpenParkingSchema = new SimpleSchema({
     defaultValue: 'Zone 20',
   },
   openSpots: {
-    type: Number,
+    type: Number, 
   },
 }, { tracker: Tracker });
 

@@ -1,0 +1,5 @@
+21.29875, -157.815591 - Parking Stall 1
+21.29878, -157.815591 - Parking Stall 2
+21.29881, -157.815591 - Parking Stall 3
+21.29884, -157.815591 - Parking Stall 4
+21.29887, -157.815591 - Parking Stall 5
