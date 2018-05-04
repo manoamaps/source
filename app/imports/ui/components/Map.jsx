@@ -85,12 +85,11 @@ export default class Map extends Component {
 
     render() {
         return (
-                <div>
+                <div >
                     <Header as="h1" textAlign="center">{this.state.map[this.state.whichMap]}</Header>
                     <Header as="h2" textAlign="center">{this.state.time[this.props.time]}</Header>
                     {/* TODO: Set min width/height of map so it doesnt mess up when screen gets small.. */}
                     <div className="map-container">
-                        {this.returnCurrentMap(this.props.time)}
                     </div>
                 </div>
         );
