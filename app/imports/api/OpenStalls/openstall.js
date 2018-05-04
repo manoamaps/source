@@ -7,7 +7,7 @@ const OpenStallsSchema = new SimpleSchema({
     lat: {
         type: Number,
     },
-    lon: {
+    lng: {
         type: Number,
     },
     open: {
