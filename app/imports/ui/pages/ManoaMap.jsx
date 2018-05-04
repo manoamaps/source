@@ -12,24 +12,6 @@ import { withTracker } from 'meteor/react-meteor-data';
 import GoogleMapReact from 'google-map-react';
 import Stall from "../components/Stall.jsx";
 
-const openStalls = [
-    {
-        lat: 21.29885,
-        lng: -157.815591,
-        open: true,
-    },
-    {
-        lat: 21.29878,
-        lng: -157.815591,
-        open: true,
-    },
-    {
-        lat: 21.29881,
-        lng: -157.815591,
-        open: true,
-    },
-];
-
 const ReactComponent = (() => (
     <div style={{
         position: 'relative', color: 'white', background: 'red',
@@ -72,6 +54,22 @@ class Test extends Component {
                 <Grid container columns={1}>
                     <Grid.Column>
                         <Grid.Row>
+                            <div style={{height: '85vh', width: '100%'}}>
+                                <GoogleMapReact
+                                    bootstrapURLKeys={{ key: ['AIzaSyCP_BFT1dJV1G3dMcU0KB_wNnixlSBl9E8']}}
+                                    defaultCenter={this.props.center}
+                                    defaultZoom={this.props.zoom}
+                                >
+                                    {this.props.data.map((stall) => (
+                                            <Stall
+                                                lat={stall.lat}
+                                                lng={stall.lng}
+                                            />
+                                    ))}
+                                </GoogleMapReact>
+                            </div>
+                        </Grid.Row>
+                        <Grid.Row>
                             <Table celled>
                                 <Table.Header>
                                     <Table.Row>
@@ -83,23 +81,6 @@ class Test extends Component {
                                     {this.props.stuffs.map((stuff) => <PassItem key={stuff._id} stuff={stuff} />)}
                                 </Table.Body>
                             </Table>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <div style={{height: '85vh', width: '100%'}}>
-                                <GoogleMapReact
-                                    bootstrapURLKeys={{ key: ['AIzaSyCP_BFT1dJV1G3dMcU0KB_wNnixlSBl9E8']}}
-                                    defaultCenter={this.props.center}
-                                    defaultZoom={this.props.zoom}
-                                >
-                                    {this.props.data.map((stall) => (
-                                            <ReactComponent
-                                                lat={stall.lat}
-                                                lng={stall.lng}
-                                                open={stall.open}
-                                            />
-                                    ))}
-                                </GoogleMapReact>
-                            </div>
                         </Grid.Row>
                     </Grid.Column>
                 </Grid>
