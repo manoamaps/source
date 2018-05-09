@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
 import ListStuff from '../pages/ListStuff';
 import ListOpenParking from '../pages/ListOpenParking';
+import GoogleMap from '../pages/GoogleMap';
 import ListStuffAdmin from '../pages/ListStuffAdmin';
 import AddStuff from '../pages/AddStuff';
 import AddPasses from '../pages/AddPasses';
@@ -30,6 +31,7 @@ class App extends React.Component {
               <Route exact path="/" component={Landing}/>
               <Route path="/signin" component={Signin}/>
               <Route path="/signup" component={Signup}/>
+              <Route path="/gmap" component={GoogleMap}/>
               <ProtectedRoute path="/list" component={ListOpenParking}/>
 
               <Route path="/map" component={ManoaMap}/>
