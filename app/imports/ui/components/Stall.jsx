@@ -49,7 +49,10 @@ class Stall extends Component {
 
     onDec(){
         var doc = OpenStalls.findOne({lat: this.props.lat});
-        OpenStalls.update({_id: doc._id}, {$set: {numOpen: doc.numOpen - 1}});
+        if(doc.numOpen > 0){
+            OpenStalls.update({_id: doc._id}, {$set: {numOpen: doc.numOpen - 1}});
+        }
+
     }
 };
 
