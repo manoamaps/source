@@ -79,6 +79,7 @@ class Test extends Component {
                                             <Stall
                                                 lat={stallx.lat}
                                                 lng={stallx.lng}
+                                                numOpen = {stallx.numOpen}
                                             />
                                     ))}
                                 </GoogleMapReact>

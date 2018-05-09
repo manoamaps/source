@@ -13,6 +13,9 @@ const OpenStallsSchema = new SimpleSchema({
     open: {
         type: Boolean,
     },
+    numOpen:{
+        type: Number,
+    },
 }, {tracker: Tracker });
 
 OpenStalls.attachSchema(OpenStallsSchema);

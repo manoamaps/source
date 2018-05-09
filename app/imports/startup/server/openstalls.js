@@ -8,12 +8,14 @@ const coordinates = [
         lat: 21.29875,
         lng: -157.815591,
         open: true,
+        numOpen: 0,
     },
     {
         name: 'spot2',
         lat: 21.29940,
         lng: -157.815691,
         open: true,
+        numOpen: 0,
     },
     
     {
@@ -21,6 +23,7 @@ const coordinates = [
         lat: 21.29980,
         lng: -157.815391,
         open: true,
+        numOpen: 0,
     },
     // {
     //     name: 'spot4',
@@ -40,6 +43,7 @@ if (OpenStalls.find().count() === 0 || OpenStalls.find().count() != coordinates.
             lat: coord.lat,
             lng: coord.lng,
             open: coord.open,
+            numOpen: coord.numOpen,
         })
     });
 }

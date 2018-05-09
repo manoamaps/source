@@ -15,21 +15,27 @@ const style={
 };
 
 export default class Stall extends Component {
-    render() {
-        if (this.props.open) {
-            return (
-                <div>
-                    <Button size="mini" color='green' content='Stall Open' onClick={this.onChange}/>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                    <Button size="mini" color='red' content='Stall Taken'/>
-                </div>
-            );
 
-        }
+    constructor(props){
+        super(props);
+        this.onChange = this.onChange.bind(this);
+    }
+
+    render() {
+
+            return (
+                <div>
+                    <Button size="mini" color='green' content={this.props.numOpen} onClick={this.onChange}>
+
+                    </Button>
+                </div>
+            );
+    }
+
+
+    onChange(){
+        console.log(this.props.numOpen);
+        this.props.numOpen = this.props.numOpen + 1;
     }
 };
 
@@ -37,4 +43,5 @@ export default class Stall extends Component {
 Stall.propTypes = {
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
+    numOpen: PropTypes.number.isRequired,
 };
